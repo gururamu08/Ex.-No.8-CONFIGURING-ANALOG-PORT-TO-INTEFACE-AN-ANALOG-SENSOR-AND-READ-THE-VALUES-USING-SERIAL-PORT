@@ -147,8 +147,8 @@ This module also includes a potentiometer that will fix the threshold value, & t
 
 ##  Program 
 ```
-DEVELOPED BY :KAVINESH M
-REGISTER NO:212222230064
+DEVELOPED BY :GURUMOORTHI R
+REGISTER NO:212222230042
 ```
 ```
 

@@ -1,10 +1,6 @@
-**** 
-
 
 ### Ex. No. :8 CONFIGURING ANALOG PORT TO INTEFACE AN ANALOG SENSOR AND READ THE VALUES USING SERIAL PORT
 ## Date: 
-###  
-
 ## Aim: 
 To configure ADC channel for interfacing an analog sensor and read the values on the com port 
 ## Components required:
@@ -150,17 +146,66 @@ This module also includes a potentiometer that will fix the threshold value, & t
 
 
 ##  Program 
+```
+DEVELOPED BY :KAVINESH M
+REGISTER NO:212222230064
+```
+```
 
+#include "main.h"
+#include"stdio.h"
+uint32_t adcvalue;
+#if defined (_ICCARM) || defined (_ARMCC_VERSION)
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#elif defined(_GNUC_)
+   
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#endif  
+
+while(1)
+{
+
+	HAL_ADC_Start(&hadc1);
+			HAL_ADC_PollForConversion(&hadc1,100);
+			adcvalue = HAL_ADC_GetValue(&hadc1);
+			HAL_ADC_Stop(&hadc1);
+			HAL_Delay(500);
+			printf("ADC VALUE:%ld\n",adcvalue);
+
+}
+
+PUTCHAR_PROTOTYPE
+{
+
+  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xFFFF);
+
+  return ch;
+}
+```
 
  
 
-## Result :
+
  
 ## Output  :
 
+### Board Settings and its connections :
+![image](https://github.com/gururamu08/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/118707009/f2215e7f-1ace-46c6-9b39-6cf8af4602f9)
 
 
+![image](https://github.com/kavinesh8476/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/118466561/ce6f8fa2-72d5-47a5-a90f-b46276a4213d)
+
+![image](https://github.com/gururamu08/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/118707009/da4d8b91-8f1b-4393-a25d-ed77ed267d46)
+
+### Normal ADC Value :
+![image](https://github.com/gururamu08/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/118707009/35bb3a2e-6969-4746-8590-d20196d79cdf)
+
+### After Light Dipping of soil-moisture-sensor-device in water :
+![image](https://github.com/gururamu08/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/118707009/c1e24960-ab19-490a-9ca1-65e7869d4bcb)
 
 
+![image](https://github.com/gururamu08/Ex.-No.8-CONFIGURING-ANALOG-PORT-TO-INTEFACE-AN-ANALOG-SENSOR-AND-READ-THE-VALUES-USING-SERIAL-PORT/assets/118707009/39c7224b-7bec-405f-a068-41ef257a3e7f)
 
-****
+## Result :
+
+Hence,the configuring analog port to inteface an analog sensor and read the values using serial port runned successfully.
